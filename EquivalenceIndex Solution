@@ -1,0 +1,35 @@
+int n = array.Length;
+
+        // Special case: Empty array
+        if (n == 0)
+            return -1;
+
+        // Calculate the total sum of the array
+        int totalSum = 0;
+        foreach (int num in array)
+        {
+            totalSum += num;
+        }
+
+        // Initialize left sum
+        int leftSum = 0;
+
+        // Iterate through the array to find the equivalence index
+        for (int i = 0; i < n; i++)
+        {
+            // Subtract the current element from the total sum to get the right sum
+            totalSum -= array[i];
+
+            // Check if the left and right sums are equal
+            if (leftSum == totalSum)
+            {
+                return i;
+            }
+
+            // Update the left sum for the next iteration
+            leftSum += array[i];
+        }
+
+        // No equivalence index found
+        return -1;
+    }
